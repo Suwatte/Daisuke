@@ -16,10 +16,12 @@ export enum RunnerType {
 export type SourceInfo = RunnerInfo & {
   readonly website: string;
   readonly supportedLanguages: string[];
+  readonly hasExplorePage: boolean;
   readonly VXI?: string; // For Later Use, Commenting
   readonly primarilyAdultContent: boolean;
   readonly authMethod?: AuthMethod;
   readonly contentSync?: boolean;
+  readonly thumbnail?: string;
 };
 
 export enum AuthMethod {

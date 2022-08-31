@@ -12,4 +12,6 @@ declare global {
     set(k: string, v: string): Promise<void>;
     remove(k: string): Promise<void>;
   }
+
+  const ASSETS_DIRECTORY: string;
 }

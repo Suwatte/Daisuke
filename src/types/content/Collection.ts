@@ -6,13 +6,18 @@ export type CollectionExcerpt = {
   title: string;
   subtitle?: string;
   style: CollectionStyle;
+  request?: SearchRequest;
 };
 
 export type HighlightCollection = CollectionExcerpt & {
   highlights: Highlight[];
-  request?: SearchRequest;
 };
 
+export type ExploreCollection = {
+  title?: string;
+  subtitle?: string;
+  highlights: Highlight[];
+};
 export enum CollectionStyle {
   NORMAL,
   INFO,

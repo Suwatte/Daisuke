@@ -11,18 +11,14 @@ import {
   Property,
   URLContentIdentifier,
   Tag,
-  HighlightCollection,
   TrackerInfo,
   Highlight,
-  AuthMethod,
   User,
-  Preference,
   PreferenceGroup,
   SyncedContent,
-  NetworkRequest,
-  NetworkResponse,
   CollectionExcerpt,
   ReadingFlag,
+  ExploreCollection,
 } from "../types";
 import { DaisukeRunner } from "./runner";
 
@@ -40,19 +36,19 @@ export abstract class Source implements DaisukeRunner {
     chapterId: string
   ): Promise<ChapterData>;
 
-  // Searching
+  // * Searching
   abstract getSearchResults(query: SearchRequest): Promise<PagedResult>;
   getSearchFilters?(): Promise<Filter[]>;
   getSearchSorters?(): Promise<SearchSort[]>;
 
-  // Explore
-  abstract getExplorePageCollections(
-    register: (c: CollectionExcerpt) => void,
-    resolve: (c: HighlightCollection) => void,
-    reject: (id: string, e: Error) => void
-  ): Promise<void>;
+  // * Explore
+  createExploreCollections?(): Promise<CollectionExcerpt[]>;
+  resolveExploreCollection?(
+    excerpt: CollectionExcerpt
+  ): Promise<ExploreCollection>;
+  getExplorePageTags?(): Promise<Tag[]>;
 
-  abstract getExplorePageTags(): Promise<Tag[]>;
+  // Tags
   abstract getSourceTags(): Promise<Property[]>;
 
   // Source Handlers
