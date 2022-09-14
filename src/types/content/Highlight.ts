@@ -1,16 +1,45 @@
-export type Highlight = {
-  id: string;
+export type BaseInfo = {
+  /**
+   * Identifier for readable content on source
+   */
+  contentId: string;
+
+  /**
+   * Title of content
+   */
   title: string;
-  covers: string[];
-  subtitle?: string[];
-  tags?: string[];
 
-  stats?: any;
+  /**
+   * Base Cover/Thumbnail for content
+   */
+  cover: string;
 
-  chapter?: {
-    id: string;
+  /**
+   * Additional Covers Provided
+   */
+  additionalCovers?: string[];
+
+  /**
+   * Stats Object for Populating INFO style tiles
+   */
+  stats?: {
+    views?: number;
+    rating?: number;
+    follows?: number;
+  };
+
+  /**
+   * Updates Object for populating LATEST style tiles
+   */
+  updates?: {
     label: string;
     date?: Date;
-    badge: number;
+    count?: Number;
   };
+};
+
+export type Highlight = BaseInfo & {
+  subtitle?: string;
+  tags?: string[];
+  info?: Record<string, string>;
 };

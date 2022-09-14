@@ -1,7 +1,7 @@
 export type Provider = {
   id: string;
   name: string;
-  links: ProviderLink[];
+  links?: ProviderLink[];
 };
 
 export type ProviderLink = {

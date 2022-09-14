@@ -3,6 +3,11 @@ export type Property = {
   label: string;
   tags: Tag[];
 };
+export type NonInteractiveProperty = {
+  id: string;
+  label: string;
+  tags: string[];
+};
 
 export type Tag = {
   id: string;
@@ -15,6 +20,7 @@ export type SearchSort = {
   label: string;
   id: string;
 };
+
 export type Filter = {
   canExclude: boolean;
   property: Property;

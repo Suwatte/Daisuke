@@ -2,18 +2,58 @@ import { Provider } from ".";
 import { ChapterData } from "./ChapterData";
 
 export type Chapter = {
-  id: string;
+  /**
+   * Identifier for this chapter
+   */
+  chapterId: string;
+
+  /**
+   * Content Identifier to which this chapter belongs to
+   */
   contentId: string;
+
+  /**
+   * The Chapters Number
+   */
   number: number;
   /**
-   * Latest Chapter should have an index of 0
+   * The index of this chapter in relation to all chapters of the content.
+   * With the latest available chapter having an index of 0
    */
   index: number;
-  volume?: number;
-  language: string;
-  title?: string;
+
+  /**
+   * URL At which the chapter is accessible on the web
+   */
+  webUrl?: string;
+
+  /**
+   * Date of Publication
+   */
   date: Date;
-  webUrl: string;
+
+  /**
+   * Volume to which this chapter belongs
+   */
+  volume?: number;
+
+  /**
+   * Language Code of this chapter
+   */
+  language?: string;
+
+  /**
+   * Title of chapter
+   */
+  title?: string;
+
+  /**
+   * Included ChapterData
+   */
   data?: ChapterData;
+
+  /**
+   * Chapter Providers
+   */
   providers?: Provider[];
 };

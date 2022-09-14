@@ -20,7 +20,7 @@ import {
   ReadingFlag,
   ExploreCollection,
 } from "../types";
-import { DaisukeRunner } from "./runner";
+import { DaisukeRunner } from "./Runner";
 
 export abstract class Source implements DaisukeRunner {
   abstract readonly info: SourceInfo;

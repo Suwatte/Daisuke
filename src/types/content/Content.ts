@@ -1,26 +1,72 @@
 import { Chapter } from "./Chapter";
 import { HighlightCollection } from "./Collection";
-import { Highlight } from "./Highlight";
-import { Property } from "./Property";
+import { BaseInfo } from "./Highlight";
+import { NonInteractiveProperty, Property } from "./Property";
 import { TrackerInfo } from "./TrackerInfo";
 
-export type Content = {
-  id: string;
-  title: String;
-  additionalTitles: string[];
-  covers: string[];
-  status: Status;
-  originalLanguage: string | "UNKNOWN";
-  creators: string[];
-  summary: string;
-  adultContent: boolean;
-  url: string;
-  properties: Property[];
+export type Content = BaseInfo & {
+  /**
+   * URL to which content is accessible on web
+   */
+  webUrl?: string;
+  /**
+   * The Publication Status of Content
+   * * Default to {@link Status.UNKNOWN} if `undefined`
+   */
+  status?: Status;
+
+  /**
+   * Names of creators of the publication; Artists, Authors etc
+   */
+  creators?: string[];
+  /**
+   * Summary / Description of the content
+   */
+  summary?: string;
+
+  /**
+   * Indicates Content Contains Adult Imagery / Text.
+   * * Defaults to `false` if `undefined`
+   */
+  adultContent?: boolean;
+
+  /**
+   * Other Names of the Publication
+   */
+  additionalTitles?: string[];
+
+  /**
+   * Properties of the publication
+   */
+  properties?: Property[];
+
+  /**
+   * Content Type of the publication
+   */
+  contentType?: ContentType;
+
+  /**
+   * recommended reading mode
+   */
+  recommendedReadingMode?: ReadingMode;
+
+  /**
+   * Properties that are non-tappable
+   */
+  nonInteractiveProperties?: NonInteractiveProperty[];
+  /**
+   * Collections to Display in Profile View
+   */
   includedCollections?: HighlightCollection[];
+  /**
+   * Tracker ID's for this content
+   */
   trackerInfo?: TrackerInfo;
+  /**
+   * Most Websites can parse both chapters and content information on the same page. Use this property to populate the content chapters.
+   * * If defined, suwatte does not make a subsequent {@link getChapters} method call.
+   */
   chapters?: Chapter[];
-  recommendedReadingMode: ReadingMode;
-  contentType: ContentType;
 };
 
 export enum Status {
