@@ -9,9 +9,3 @@ export type ChapterPage = {
   url?: string;
   raw?: string;
 };
-
-// export enum ChapterType {
-//   COMIC,
-//   NOVEL,
-//   WEB,
-// }

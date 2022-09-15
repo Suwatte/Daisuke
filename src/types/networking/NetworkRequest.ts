@@ -17,7 +17,13 @@ export type NetworkRequest = {
   params?: Record<string, any>;
   body?: Record<string, any>;
   headers?: Record<string, string>;
-
+  cookies?: {
+    name: string;
+    value: string;
+    domain: string;
+    path?: string;
+    expires?: Date;
+  }[];
   // TODO
   timeout?: number;
   maxRetries?: number;

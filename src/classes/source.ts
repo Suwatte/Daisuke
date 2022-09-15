@@ -19,6 +19,7 @@ import {
   CollectionExcerpt,
   ReadingFlag,
   ExploreCollection,
+  NetworkRequest,
 } from "../types";
 import { DaisukeRunner } from "./Runner";
 
@@ -70,7 +71,7 @@ export abstract class Source implements DaisukeRunner {
 
   // Request Events
   willAttemptCloudflareVerification?(): Promise<string>;
-
+  willRequestImage?(request: NetworkRequest): Promise<NetworkRequest>;
   // Authentication
   handleBasicAuth?(identifier: string, password: string): Promise<void>;
   getAuthenticatedUser?(): Promise<User | null>;
