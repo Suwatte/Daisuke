@@ -21,7 +21,7 @@ import {
   ExploreCollection,
   NetworkRequest,
 } from "../types";
-import { DaisukeRunner } from "./Runner";
+import { DaisukeRunner } from ".";
 
 export abstract class Source implements DaisukeRunner {
   abstract readonly info: SourceInfo;
