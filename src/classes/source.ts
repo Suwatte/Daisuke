@@ -27,8 +27,6 @@ export abstract class Source implements DaisukeRunner {
   abstract readonly info: SourceInfo;
   readonly type: RunnerType = RunnerType.CONTENT_SOURCE;
 
-  playground?(): Promise<void>;
-
   // Content
   abstract getContent(contentId: string): Promise<Content>;
   abstract getChapters(contentId: string): Promise<Chapter[]>;
