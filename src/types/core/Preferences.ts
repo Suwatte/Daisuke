@@ -17,11 +17,24 @@ export interface Preference {
   options?: SelectOption[];
 
   // Stepper
+  /**
+   * Defaults to 100
+   */
   maxStepperValue?: number;
+  /**
+   * Default to 1
+   */
   minStepperValue?: number;
 
   // Multiselect
+  /**
+   * Defaults to 1
+   */
   minSelectionCount?: number;
+
+  /**
+   * Defaults to 10
+   */
   maxSelectionCount?: number;
 }
 
@@ -30,9 +43,12 @@ export type SelectOption = {
   value: string;
 };
 
-export interface PreferenceGroup {
+export type UIGroup = {
   id: string;
   header?: string;
   footer?: string;
+};
+
+export type PreferenceGroup = UIGroup & {
   children: Preference[];
-}
+};

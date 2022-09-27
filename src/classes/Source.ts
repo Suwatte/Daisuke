@@ -20,6 +20,7 @@ import {
   ReadingFlag,
   ExploreCollection,
   NetworkRequest,
+  ActionGroup,
 } from "../types";
 import { DaisukeRunner } from ".";
 
@@ -35,12 +36,12 @@ export abstract class Source implements DaisukeRunner {
     chapterId: string
   ): Promise<ChapterData>;
 
-  // * Searching
+  // Searching
   abstract getSearchResults(query: SearchRequest): Promise<PagedResult>;
   getSearchFilters?(): Promise<Filter[]>;
   getSearchSorters?(): Promise<SearchSort[]>;
 
-  // * Explore
+  // Explore
   createExploreCollections?(): Promise<CollectionExcerpt[]>;
   resolveExploreCollection?(
     excerpt: CollectionExcerpt
@@ -54,20 +55,41 @@ export abstract class Source implements DaisukeRunner {
   handleIdentifierForUrl?(url: string): Promise<URLContentIdentifier | null>;
   handleMatchTracker?(trackerInfo: TrackerInfo): Promise<Highlight[]>;
 
-  //  Source Preferences
+  //  Source Preferences & Actions
   getUserPreferences?(): Promise<PreferenceGroup[]>;
+  getSourceActions?(): Promise<ActionGroup[]>;
 
   // Source State Events
+  /**
+   * Called After the source is successfully initialized in app.
+   */
   onSourceLoaded?(): Promise<void>;
+  didTriggerAction?(key: string): Promise<void>;
+
+  // Content State Events
   onContentsAddedToLibrary?(ids: string[]): Promise<void>;
   onContentsRemovedFromLibrary?(ids: string[]): Promise<void>;
-  onChaptersCompleted?(contentId: string, chapterIds: string[]): Promise<void>;
   onContentsReadingFlagChanged?(
     ids: string[],
     flag: ReadingFlag
   ): Promise<void>;
+  // Chapter State Events
+  /**
+   * Called when the "Mark" state of a chapter/chapters changes, manually or as a result of syncing
+   */
+  onChaptersMarked?(
+    contentId: string,
+    chapterIds: string[],
+    completed: boolean
+  ): Promise<void>;
 
-  // Request Events
+  /**
+   * Called when a chapter is read/completed by the user.
+   * Is only called as a result of completing a chapter in the reader
+   */
+  onChapterRead?(contentId: string, chapterId: string): Promise<void>;
+
+  // Network Request Events
   willAttemptCloudflareVerification?(): Promise<string>;
   willRequestImage?(request: NetworkRequest): Promise<NetworkRequest>;
   // Authentication
@@ -79,6 +101,7 @@ export abstract class Source implements DaisukeRunner {
   // handleWebViewAuth?(): Promise<void>;
   // getOAuthRequest?(): Promise<NetworkRequest>;
   // handleOAuthResponse?(): Promise<NetworkResponse>;
+  // didMigrateLibrary?(added: string[], removed: string[]): Promise<void>;
 
   // Sync Related
   getUserLibrary?(): Promise<SyncedContent[]>;

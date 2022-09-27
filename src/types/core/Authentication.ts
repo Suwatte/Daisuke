@@ -11,7 +11,7 @@ export type User = {
   readonly id: string;
   readonly username: string;
   readonly avatar?: string;
-  readonly info?: Record<string, string>;
+  readonly info?: string[];
 };
 
 export interface SyncedContent {
