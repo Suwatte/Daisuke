@@ -14,9 +14,14 @@ export type User = {
   readonly info?: string[];
 };
 
-export interface SyncedContent {
+export interface UpSyncedContent {
+  id: string;
+  flag: ReadingFlag;
+}
+
+export interface DownSyncedContent {
   id: string;
   title: string;
-  covers: string[];
-  readingFlag: ReadingFlag;
+  cover: string;
+  readingFlag?: ReadingFlag;
 }

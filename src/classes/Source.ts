@@ -15,12 +15,13 @@ import {
   Highlight,
   User,
   PreferenceGroup,
-  SyncedContent,
+  DownSyncedContent,
   CollectionExcerpt,
   ReadingFlag,
   ExploreCollection,
   NetworkRequest,
   ActionGroup,
+  UpSyncedContent,
 } from "../types";
 import { DaisukeRunner } from ".";
 
@@ -104,6 +105,6 @@ export abstract class Source implements DaisukeRunner {
   // didMigrateLibrary?(added: string[], removed: string[]): Promise<void>;
 
   // Sync Related
-  getUserLibrary?(): Promise<SyncedContent[]>;
+  syncUserLibrary?(library: UpSyncedContent[]): Promise<DownSyncedContent[]>;
   getReadChapterMarkers?(contentId: string): Promise<string[]>;
 }
