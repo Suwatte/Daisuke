@@ -22,6 +22,7 @@ import {
   NetworkRequest,
   ActionGroup,
   UpSyncedContent,
+  NetworkResponse,
 } from "../types";
 import { DaisukeRunner } from ".";
 
@@ -98,11 +99,22 @@ export abstract class Source implements DaisukeRunner {
   getAuthenticatedUser?(): Promise<User | null>;
   handleUserSignOut?(): Promise<void>;
 
-  // TODO: WebView & OAuth Auth
-  // handleWebViewAuth?(): Promise<void>;
+  // WebView Authentication
+  /**
+   * HTTP Request to be made in the WebView
+   */
+  willRequestWebViewAuth?(): Promise<NetworkRequest>;
+
+  /**
+   * Handle Cookies received from the webview
+   * @param name The Name of the received cookie
+   * @return A boolean value indicating whether the user has been successfully logged in
+   */
+  didReceiveWebAuthCookie?(name: string): Promise<boolean>;
+
+  // TODO: OAuth
   // getOAuthRequest?(): Promise<NetworkRequest>;
   // handleOAuthResponse?(): Promise<NetworkResponse>;
-  // didMigrateLibrary?(added: string[], removed: string[]): Promise<void>;
 
   // Sync Related
   syncUserLibrary?(library: UpSyncedContent[]): Promise<DownSyncedContent[]>;
