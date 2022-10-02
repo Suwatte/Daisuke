@@ -92,7 +92,7 @@ export abstract class Source implements DaisukeRunner {
   onChapterRead?(contentId: string, chapterId: string): Promise<void>;
 
   // Network Request Events
-  willAttemptCloudflareVerification?(): Promise<string>;
+  willAttemptCloudflareVerification?(): Promise<NetworkRequest>;
   willRequestImage?(request: NetworkRequest): Promise<NetworkRequest>;
   // Authentication
   handleBasicAuth?(identifier: string, password: string): Promise<void>;
