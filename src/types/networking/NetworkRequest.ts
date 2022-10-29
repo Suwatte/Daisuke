@@ -20,11 +20,7 @@ export type NetworkRequest = {
   cookies?: {
     name: string;
     value: string;
-    domain: string;
-    path?: string;
-    expires?: Date;
   }[];
-  // TODO
   timeout?: number;
   maxRetries?: number;
 };
