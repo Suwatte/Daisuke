@@ -1,6 +1,5 @@
 import {
   SourceInfo,
-  RunnerType,
   Content,
   Chapter,
   ChapterData,
@@ -22,13 +21,10 @@ import {
   NetworkRequest,
   ActionGroup,
   UpSyncedContent,
-  NetworkResponse,
 } from "../types";
-import { DaisukeRunner } from ".";
 
-export abstract class Source implements DaisukeRunner {
+export abstract class Source {
   abstract readonly info: SourceInfo;
-  readonly type: RunnerType = RunnerType.CONTENT_SOURCE;
 
   // Content
   abstract getContent(contentId: string): Promise<Content>;
