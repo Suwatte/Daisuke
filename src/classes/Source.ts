@@ -21,13 +21,23 @@ import {
   NetworkRequest,
   ActionGroup,
   UpSyncedContent,
+  AuthMethod,
 } from "../types";
 
 export abstract class Source {
   abstract readonly info: SourceInfo;
 
   // Content
+  /**
+   * Gets the titles information from the source
+   * @param contentId The ID of the content to be fetched
+   */
   abstract getContent(contentId: string): Promise<Content>;
+
+  /**
+   * Gets the chapters of the specified content.
+   * @param contentId The ID of the content whose chapters should be fetched
+   */
   abstract getChapters(contentId: string): Promise<Chapter[]>;
   abstract getChapterData(
     contentId: string,
@@ -35,15 +45,40 @@ export abstract class Source {
   ): Promise<ChapterData>;
 
   // Searching
+  /**
+   * Gets the search results for the source.
+   * @param query The Search Request
+   */
   abstract getSearchResults(query: SearchRequest): Promise<PagedResult>;
+
+  /**
+   * Gets the Search Filters For the Source
+   */
   getSearchFilters?(): Promise<Filter[]>;
+  /**
+   * Gets the Sources Search Sorting Options
+   */
   getSearchSorters?(): Promise<SearchSort[]>;
 
   // Explore
+  /**
+   * Called to Create Collections to be shown in the explore page.
+   *
+   * If this method is not defined, the source defaults to using the search page as it's explore page under the name "Directory"
+   */
   createExploreCollections?(): Promise<CollectionExcerpt[]>;
+
+  /**
+   * Resolves/Populates the collection excerpt
+   * @param excerpt The Collection to be resolved
+   */
   resolveExploreCollection?(
     excerpt: CollectionExcerpt
   ): Promise<ExploreCollection>;
+
+  /**
+   * Called to Fetch Tags to be displayed in the explore page.
+   */
   getExplorePageTags?(): Promise<Tag[]>;
 
   // Tags
@@ -83,6 +118,7 @@ export abstract class Source {
 
   /**
    * Called when a chapter is read/completed by the user.
+   *
    * Is only called as a result of completing a chapter in the reader
    */
   onChapterRead?(contentId: string, chapterId: string): Promise<void>;
@@ -90,7 +126,9 @@ export abstract class Source {
   // Network Request Events
   willAttemptCloudflareVerification?(): Promise<NetworkRequest>;
   willRequestImage?(request: NetworkRequest): Promise<NetworkRequest>;
+
   // Authentication
+  getAuthenticationMethod?(): Promise<AuthMethod>;
   handleBasicAuth?(identifier: string, password: string): Promise<void>;
   getAuthenticatedUser?(): Promise<User | null>;
   handleUserSignOut?(): Promise<void>;

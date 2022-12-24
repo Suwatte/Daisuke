@@ -1,5 +1,3 @@
-import { AuthMethod } from "./Authentication";
-
 export type RunnerInfo = {
   readonly id: string;
   readonly name: string;
@@ -8,18 +6,9 @@ export type RunnerInfo = {
   readonly minSupportedAppVersion?: string;
 };
 
-export enum RunnerType {
-  CONTENT_SOURCE,
-  SERVICE_INTERACTOR,
-}
-
 export type SourceInfo = RunnerInfo & {
   readonly website: string;
   readonly supportedLanguages: string[];
-  readonly hasExplorePage?: boolean;
-  readonly primarilyAdultContent?: boolean;
+  readonly nsfw: boolean;
   readonly thumbnail?: string;
-  readonly VXI?: string;
-  readonly authMethod?: AuthMethod;
-  readonly contentSync?: boolean;
 };
