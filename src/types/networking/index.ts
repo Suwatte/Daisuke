@@ -6,7 +6,6 @@ export * from "./NetworkResponse";
 
 declare global {
   class NetworkClient {
-    // Fetchers
     post(url: string, config?: NetworkRequestConfig): Promise<NetworkResponse>;
     get(url: string, config?: NetworkRequestConfig): Promise<NetworkResponse>;
     request(req: NetworkRequest): Promise<NetworkResponse>;

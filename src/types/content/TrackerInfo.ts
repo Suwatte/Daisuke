@@ -1,20 +1,24 @@
-export type TrackerInfo = {
+import { z } from "zod";
+
+export const ZTrackerInfo = z.object({
   /**
-   * Anilist ID
+   * The Contents Anilist ID
    */
-  al?: string;
+  al: z.string().optional(),
   /**
-   * MyAnimelist ID
+   * The Content's MyAnimeList ID
    */
-  mal?: string;
+  mal: z.string().optional(),
 
   /**
-   * Kitsu ID
+   * The Content's Kitsu ID
    */
-  kt?: string;
+  kt: z.string().optional(),
 
   /**
-   * MangaUpdates ID
+   * The Content's MangaUpdates ID
    */
-  mu?: string;
-} & Record<string, string>;
+  mu: z.string().optional(),
+});
+
+export type TrackerInfo = z.infer<typeof ZTrackerInfo>;

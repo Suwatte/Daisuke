@@ -1,59 +1,56 @@
-import { Provider } from ".";
-import { ChapterData } from "./ChapterData";
+import { ZProvider } from ".";
+import { ZChapterData } from "./ChapterData";
+import { z } from "zod";
 
-export type Chapter = {
+export const ZChapter = z.object({
   /**
-   * Identifier for this chapter
+   * Identifier for this chapter in relation to the Content
    */
-  chapterId: string;
+  chapterId: z.string().min(1),
 
   /**
    * Content Identifier to which this chapter belongs to
    */
-  contentId: string;
-
+  contentId: z.string().min(1),
   /**
    * The Chapters Number
    */
-  number: number;
+  number: z.number().int(),
   /**
    * The index of this chapter in relation to all chapters of the content.
-   * With the latest available chapter having an index of 0
+   *
+   * The First Most Available Chapter Should Have an Index of 0
    */
-  index: number;
-
+  index: z.number().int().nonnegative(),
   /**
    * URL At which the chapter is accessible on the web
    */
-  webUrl?: string;
-
+  webUrl: z.string().url().optional(),
   /**
    * Date of Publication
    */
-  date: Date;
-
+  date: z.date(),
   /**
    * Volume to which this chapter belongs
    */
-  volume?: number;
-
+  volume: z.number().int().nonnegative().optional(),
   /**
    * Language Code of this chapter
    */
-  language?: string;
-
+  language: z.string().optional(),
   /**
    * Title of chapter
    */
-  title?: string;
+  title: z.string().optional(),
+  /**
+   * Included {@link ChapterData}
+   */
+  data: ZChapterData.optional(),
 
   /**
-   * Included ChapterData
+   * The Chapters {@link Provider}'s
    */
-  data?: ChapterData;
+  providers: z.array(ZProvider).optional(),
+});
 
-  /**
-   * Chapter Providers
-   */
-  providers?: Provider[];
-};
+export type Chapter = z.infer<typeof ZChapter>;

@@ -1,18 +1,21 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "zod": "^3.20.2"
+  },
   "name": "@suwatte/daisuke",
-  "version": "1.2.4",
+  "version": "1.3.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf ./dist && tsc"
   },
   "devDependencies": {
-    "typescript": "^4.9.4",
-    "@types/node": "^18.11.17"
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4"
   },
   "keywords": [
-    "suwatte"
+    "suwatte",
+    "types"
   ],
   "author": {
     "name": "Mantton",

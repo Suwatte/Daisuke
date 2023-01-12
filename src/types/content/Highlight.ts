@@ -1,45 +1,63 @@
-export type BaseInfo = {
+import { z } from "zod";
+export const ZBaseInfo = z.object({
   /**
    * Identifier for readable content on source
    */
-  contentId: string;
+  contentId: z.string().min(1),
 
   /**
    * Title of content
    */
-  title: string;
+  title: z.string().min(1),
 
   /**
    * Base Cover/Thumbnail for content
    */
-  cover: string;
+  cover: z.string().url(),
 
   /**
    * Additional Covers Provided
    */
-  additionalCovers?: string[];
+  additionalCovers: z.array(z.string()).optional(),
 
   /**
-   * Stats Object for Populating INFO style tiles
+   * Object for Populating INFO Styled Collections
    */
-  stats?: {
-    views?: number;
-    rating?: number;
-    follows?: number;
-  };
+  stats: z
+    .object({
+      views: z.number().int().nonnegative().optional(),
+      rating: z.number().nonnegative().optional(),
+      follows: z.number().int().nonnegative().optional(),
+    })
+    .optional(),
 
   /**
-   * Updates Object for populating LATEST style tiles
+   * Object for Populating LATEST styled Collections
    */
-  updates?: {
-    label: string;
-    date?: Date;
-    count?: Number;
-  };
-};
+  updates: z
+    .object({
+      label: z.string().min(1),
+      date: z.date().optional(),
+      count: z.number().int().nonnegative().optional(),
+    })
+    .optional(),
+});
 
-export type Highlight = BaseInfo & {
-  subtitle?: string;
-  tags?: string[];
-  info?: Record<string, string>;
-};
+export const ZHighlight = ZBaseInfo.merge(
+  z.object({
+    /**
+     * The Subtitle of this Card/Highlight
+     */
+    subtitle: z.string().min(1).optional(),
+    /**
+     * Tags to be displayed with this title
+     */
+    tags: z.array(z.string().min(1)).optional(),
+    /**
+     * Additional Information about this Title
+     */
+    info: z.record(z.string()).optional(),
+  })
+);
+export type BaseInfo = z.infer<typeof ZBaseInfo>;
+export type Highlight = z.infer<typeof ZHighlight>;
