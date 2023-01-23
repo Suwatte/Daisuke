@@ -57,8 +57,9 @@ export const ZFilter = z.object({
 });
 
 // Types
-export type Property = z.infer<typeof ZProperty>;
-export type NonInteractiveProperty = z.infer<typeof ZNonInteractiveProperty>;
-export type Tag = z.infer<typeof ZTag>;
-export type SearchSort = z.infer<typeof ZBaseInteractable>;
-export type Filter = z.infer<typeof ZFilter>;
+export interface Property extends z.infer<typeof ZProperty> {}
+export interface NonInteractiveProperty
+  extends z.infer<typeof ZNonInteractiveProperty> {}
+export interface Tag extends z.infer<typeof ZTag> {}
+export interface SearchSort extends z.infer<typeof ZBaseInteractable> {}
+export interface Filter extends z.infer<typeof ZFilter> {}

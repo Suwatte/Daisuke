@@ -21,4 +21,4 @@ export const ZTrackerInfo = z.object({
   mu: z.string().optional(),
 });
 
-export type TrackerInfo = z.infer<typeof ZTrackerInfo>;
+export interface TrackerInfo extends z.infer<typeof ZTrackerInfo> {}

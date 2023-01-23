@@ -35,5 +35,5 @@ export const ZChapterData = z.object({
   pages: z.array(ZChapterPage).optional(),
 });
 
-export type ChapterData = z.infer<typeof ZChapterData>;
-export type ChapterPage = z.infer<typeof ZChapterPage>;
+export interface ChapterData extends z.infer<typeof ZChapterData> {}
+export interface ChapterPage extends z.infer<typeof ZChapterPage> {}

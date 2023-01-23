@@ -60,6 +60,6 @@ export const ZDownSyncedContent = z.object({
 });
 
 // Types
-export type User = z.infer<typeof ZUser>;
-export type UpSyncedContent = z.infer<typeof ZUpSyncedContent>;
-export type DownSyncedContent = z.infer<typeof ZDownSyncedContent>;
+export interface User extends z.infer<typeof ZUser> {}
+export interface UpSyncedContent extends z.infer<typeof ZUpSyncedContent> {}
+export interface DownSyncedContent extends z.infer<typeof ZDownSyncedContent> {}

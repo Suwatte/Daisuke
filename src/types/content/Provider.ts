@@ -34,5 +34,5 @@ export const ZProvider = z.object({
   links: z.array(ZProviderLink).optional(),
 });
 
-export type Provider = z.infer<typeof ZProvider>;
-export type ProviderLink = z.infer<typeof ZProviderLink>;
+export interface Provider extends z.infer<typeof ZProvider> {}
+export interface ProviderLink extends z.infer<typeof ZProviderLink> {}

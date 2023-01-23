@@ -121,7 +121,7 @@ const ZBaseContent = z.object({
 });
 export const ZContent = ZBaseInfo.merge(ZBaseContent);
 // Types
-export type Content = z.infer<typeof ZContent>;
+export interface Content extends z.infer<typeof ZContent> {}
 export type URLContentIdentifier = {
   chapterId?: string;
   contentId: string;

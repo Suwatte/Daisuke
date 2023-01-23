@@ -53,4 +53,4 @@ export const ZChapter = z.object({
   providers: z.array(ZProvider).optional(),
 });
 
-export type Chapter = z.infer<typeof ZChapter>;
+export interface Chapter extends z.infer<typeof ZChapter> {}

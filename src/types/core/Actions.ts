@@ -38,5 +38,5 @@ export const ZActionGroup = ZUIGroup.extend({
 });
 
 // Types
-export type Action = z.infer<typeof ZAction>;
-export type ActionGroup = z.infer<typeof ZActionGroup>;
+export interface Action extends z.infer<typeof ZAction> {}
+export interface ActionGroup extends z.infer<typeof ZActionGroup> {}

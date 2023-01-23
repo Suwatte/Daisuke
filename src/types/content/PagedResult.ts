@@ -22,4 +22,4 @@ export const ZPagedResult = z.object({
    */
   totalResultCount: z.number().int().nonnegative().optional(),
 });
-export type PagedResult = z.infer<typeof ZPagedResult>;
+export interface PagedResult extends z.infer<typeof ZPagedResult> {}

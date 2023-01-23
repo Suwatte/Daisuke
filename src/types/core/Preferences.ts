@@ -108,7 +108,7 @@ export const ZPreferenceGroup = ZUIGroup.extend({
 });
 
 // Types
-export type SelectionOption = z.infer<typeof ZSelectionOption>;
-export type Preference = z.infer<typeof ZPreference>;
-export type UIGroup = z.infer<typeof ZUIGroup>;
-export type PreferenceGroup = z.infer<typeof ZPreferenceGroup>;
+export interface SelectionOption extends z.infer<typeof ZSelectionOption> {}
+export interface Preference extends z.infer<typeof ZPreference> {}
+export interface UIGroup extends z.infer<typeof ZUIGroup> {}
+export interface PreferenceGroup extends z.infer<typeof ZPreferenceGroup> {}

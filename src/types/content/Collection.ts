@@ -56,6 +56,7 @@ export const ZExploreCollection = z.object({
 });
 
 // Types
-export type CollectionExcerpt = z.infer<typeof ZCollectionExcerpt>;
-export type HighlightCollection = z.infer<typeof ZHighlightCollection>;
-export type ExploreCollection = z.infer<typeof ZExploreCollection>;
+export interface CollectionExcerpt extends z.infer<typeof ZCollectionExcerpt> {}
+export interface HighlightCollection
+  extends z.infer<typeof ZHighlightCollection> {}
+export interface ExploreCollection extends z.infer<typeof ZExploreCollection> {}

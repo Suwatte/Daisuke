@@ -59,5 +59,5 @@ export const ZHighlight = ZBaseInfo.merge(
     info: z.record(z.string()).optional(),
   })
 );
-export type BaseInfo = z.infer<typeof ZBaseInfo>;
-export type Highlight = z.infer<typeof ZHighlight>;
+export interface BaseInfo extends z.infer<typeof ZBaseInfo> {}
+export interface Highlight extends z.infer<typeof ZHighlight> {}

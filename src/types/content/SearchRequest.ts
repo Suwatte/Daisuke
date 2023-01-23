@@ -24,4 +24,4 @@ export const ZSearchRequest = z.object({
    */
   sort: ZBaseInteractable.optional(),
 });
-export type SearchRequest = z.infer<typeof ZSearchRequest>;
+export interface SearchRequest extends z.infer<typeof ZSearchRequest> {}
