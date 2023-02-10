@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ZUIGroup } from ".";
+import { ZUIGroup } from "../core/Preferences";
 
 // Schemas
 export const ZAction = z.object({

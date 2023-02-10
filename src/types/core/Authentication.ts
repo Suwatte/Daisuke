@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ReadingFlag } from "..";
+import { ReadingFlag } from "../content/Content";
 
 export enum AuthMethod {
   USERNAME_PW,
@@ -26,7 +26,7 @@ export const ZUser = z.object({
   /**
    * Additional Information about the user to be displayed
    */
-  info: z.array(z.string()),
+  info: z.array(z.string()).optional(),
 });
 
 export const ZUpSyncedContent = z.object({

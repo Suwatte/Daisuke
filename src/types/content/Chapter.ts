@@ -1,4 +1,4 @@
-import { ZProvider } from ".";
+import { ZProvider } from "../content/Provider";
 import { ZChapterData } from "./ChapterData";
 import { z } from "zod";
 

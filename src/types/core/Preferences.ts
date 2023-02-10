@@ -52,7 +52,7 @@ export const ZPreference = z.object({
    *
    * This is **only** used when preference type is either SELECT or MULTISELECT
    */
-  options: z.array(ZSelectionOption),
+  options: z.array(ZSelectionOption).optional(),
 
   // * ---
   /**
