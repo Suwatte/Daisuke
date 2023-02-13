@@ -15,7 +15,7 @@ export const ZChapter = z.object({
   /**
    * The Chapters Number
    */
-  number: z.number().int(),
+  number: z.number().nonnegative(),
   /**
    * The index of this chapter in relation to all chapters of the content.
    *
@@ -33,7 +33,7 @@ export const ZChapter = z.object({
   /**
    * Volume to which this chapter belongs
    */
-  volume: z.number().int().nonnegative().optional(),
+  volume: z.number().nonnegative().optional(),
   /**
    * Language Code of this chapter
    */

@@ -1,5 +1,5 @@
-import { ZBaseInteractable } from "./Property";
 import { z } from "zod";
+import { ZFilter, ZPopulatedFilter } from "./Filter";
 
 export const ZSearchRequest = z.object({
   /**
@@ -11,17 +11,10 @@ export const ZSearchRequest = z.object({
    */
   page: z.number().int().nonnegative().optional(),
   /**
-   * IDS of all included Tags
+   * The User Selected Sort ID
    */
-  includedTags: z.array(z.string()).optional(),
-  /**
-   * ids of all excluded Tags
-   */
-  excludedTags: z.array(z.string()).optional(),
+  sort: z.string().optional(),
 
-  /**
-   * The User Selected Sort Option
-   */
-  sort: ZBaseInteractable.optional(),
+  filters: z.array(ZPopulatedFilter).optional(),
 });
 export interface SearchRequest extends z.infer<typeof ZSearchRequest> {}

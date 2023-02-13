@@ -22,6 +22,7 @@ import {
   ActionGroup,
   UpSyncedContent,
   AuthMethod,
+  ExploreTag,
 } from "../types";
 
 export abstract class Source {
@@ -67,7 +68,7 @@ export abstract class Source {
    * If this method is not defined, the source defaults to using the search page as it's explore page under the name "Directory"
    */
   createExploreCollections?(): Promise<CollectionExcerpt[]>;
-
+  willResolveExploreCollections?(): Promise<void>;
   /**
    * Resolves/Populates the collection excerpt
    * @param excerpt The Collection to be resolved
@@ -79,7 +80,7 @@ export abstract class Source {
   /**
    * Called to Fetch Tags to be displayed in the explore page.
    */
-  getExplorePageTags?(): Promise<Tag[]>;
+  getExplorePageTags?(): Promise<ExploreTag[]>;
 
   // Tags
   abstract getSourceTags(): Promise<Property[]>;

@@ -24,7 +24,11 @@ export const ZTag = ZBaseInteractable.extend({
   /**
    * A boolean indicating the titles marked with this tag contain Adult Content
    */
-  adultContent: z.boolean(),
+  adultContent: z.boolean().optional(),
+});
+
+export const ZExploreTag = ZBaseInteractable.extend({
+  filterId: z.string(),
   /**
    * A URL pointing to an image to display with this tag.
    *
@@ -40,26 +44,10 @@ export const ZProperty = ZBaseInteractable.extend({
   tags: z.array(ZTag),
 });
 
-export const ZFilter = z.object({
-  /**
-   * The ID of this filter
-   */
-  id: z.string().min(1),
-  /**
-   * A boolean indicating this filter's tags can be excluded.
-   */
-  canExclude: z.boolean(),
-
-  /**
-   *  The Property this filter represents
-   */
-  property: ZProperty,
-});
-
 // Types
 export interface Property extends z.infer<typeof ZProperty> {}
 export interface NonInteractiveProperty
   extends z.infer<typeof ZNonInteractiveProperty> {}
 export interface Tag extends z.infer<typeof ZTag> {}
 export interface SearchSort extends z.infer<typeof ZBaseInteractable> {}
-export interface Filter extends z.infer<typeof ZFilter> {}
+export interface ExploreTag extends z.infer<typeof ZExploreTag> {}

@@ -8,3 +8,4 @@ export * from "./TrackerInfo";
 export * from "./Property";
 export * from "./Collection";
 export * from "./Provider";
+export * from "./Filter";
