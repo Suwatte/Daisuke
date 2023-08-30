@@ -1,3 +1,23 @@
+export enum CatalogRating {
+  /**
+   * Catalog does not contain ANY SUGGESTIVE OR NSFW content
+   */
+  SAFE,
+
+  /**
+   * Catalog may contain SUGGESTIVE OR NSFW content,
+   * runners must hide NSFW content by default,
+   * users will be required to verify they are of age to view NSFW content
+   */
+  MIXED,
+
+  /**
+   * Catalog contains MAINLY SUGGESTIVE OR NSFW content,
+   * users will be required to verify they are of age to view NSFW content
+   */
+  NSFW,
+}
+
 export type RunnerInfo = {
   /**
    * The ID of this runner. It should be unique.
@@ -17,30 +37,14 @@ export type RunnerInfo = {
   readonly version: number;
 
   /**
-   * The Name of the authors.
+   * The general content rating of titles on this runner
    */
-  readonly authors?: string[];
+  readonly rating: CatalogRating;
 
   /**
    * This Minimum App Version This Runner Supports.
    */
   readonly minSupportedAppVersion?: string;
-};
-
-export type SourceInfo = RunnerInfo & {
-  /**
-   * The Websites URL
-   */
-  readonly website: string;
-  /**
-   * List of languages codes this source has chapters in.
-   */
-  readonly supportedLanguages: string[];
-
-  /**
-   * This should be set to true if a majority of the sources content are NSFW.
-   */
-  readonly nsfw: boolean;
 
   /**
    * The filename of the sources cover image within the assets folder.
@@ -52,4 +56,13 @@ export type SourceInfo = RunnerInfo & {
    * * Alternatively if JollyComics has an icon image at `https://jollycomics.com/thumbnail.png`, you can set `thumbnail` to the specified URL.
    */
   readonly thumbnail?: string;
+
+  /**
+   * The Websites URL
+   */
+  readonly website?: string;
+  /**
+   * List of languages codes this source has chapters in ISO-631 Format
+   */
+  readonly supportedLanguages?: string[];
 };

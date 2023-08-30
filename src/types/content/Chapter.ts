@@ -1,56 +1,59 @@
-import { ZProvider } from "../content/Provider";
-import { ZChapterData } from "./ChapterData";
-import { z } from "zod";
+import { Provider } from "../content/Provider";
+import { ChapterData } from "./ChapterData";
 
-export const ZChapter = z.object({
+export type Chapter = {
   /**
    * Identifier for this chapter in relation to the Content
    */
-  chapterId: z.string().min(1),
-
+  chapterId: string;
   /**
    * Content Identifier to which this chapter belongs to
    */
-  contentId: z.string().min(1),
+  contentId: string;
   /**
    * The Chapters Number
    */
-  number: z.number().nonnegative(),
+  number: number;
   /**
    * The index of this chapter in relation to all chapters of the content.
    *
    * The First Most Available Chapter Should Have an Index of 0
    */
-  index: z.number().int().nonnegative(),
+  index: number;
   /**
    * URL At which the chapter is accessible on the web
    */
-  webUrl: z.string().url().optional(),
+  webUrl?: string;
   /**
    * Date of Publication
    */
-  date: z.date(),
+  date: Date;
   /**
    * Volume to which this chapter belongs
    */
-  volume: z.number().nonnegative().optional(),
+  volume?: number;
   /**
-   * Language Code of this chapter
+   * Language Code of this chapter in ISO-6379
+   *
+   * Read More: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
    */
-  language: z.string().optional(),
+  language: string;
   /**
    * Title of chapter
    */
-  title: z.string().optional(),
+  title?: string;
   /**
    * Included {@link ChapterData}
    */
-  data: ZChapterData.optional(),
+  data?: ChapterData;
 
   /**
    * The Chapters {@link Provider}'s
    */
-  providers: z.array(ZProvider).optional(),
-});
+  providers?: Provider[];
 
-export interface Chapter extends z.infer<typeof ZChapter> {}
+  /**
+   * The Thumbnail Image of the Chapter
+   */
+  cover?: string;
+};

@@ -1,4 +1,3 @@
-import { z } from "zod";
 import { ReadingFlag } from "../content/Content";
 
 export enum AuthMethod {
@@ -9,57 +8,59 @@ export enum AuthMethod {
 }
 
 // Schemas
-export const ZUser = z.object({
+
+export type User = {
   /**
-   * The Users ID
+   * The users handle
    */
-  id: z.string().min(1),
+  handle: string;
+
   /**
-   * The users username
+   * The Users's Display Name
    */
-  username: z.string().min(1),
+  displayName?: string;
   /**
    * The users Avatar / Profile Picture
    */
-  avatar: z.string().url().optional(),
+  avatar?: string;
+
+  /**
+   * The banner image of the profile
+   */
+  bannerImage?: string;
 
   /**
    * Additional Information about the user to be displayed
    */
-  info: z.array(z.string()).optional(),
-});
+  info?: string[];
+};
 
-export const ZUpSyncedContent = z.object({
+export type UpSyncedContent = {
   /**
    * The ID of the Title to be synced
    */
-  id: z.string().min(1),
+  id: string;
   /**
    * The Reading/Library flag of the title to be synced
    */
-  flag: z.nativeEnum(ReadingFlag),
-});
+  flag: ReadingFlag;
+};
 
-export const ZDownSyncedContent = z.object({
+export type DownSyncedContent = {
   /**
    * The ID of the content
    */
-  id: z.string().min(1),
+  id: string;
   /**
    * The Title of the content
    */
-  title: z.string().min(1),
+  title: string;
   /**
    * The Cover/Thumbnail URL of the Title Synced
    */
-  cover: z.string().url(),
+  cover: string;
   /**
    * The Reading Flag of the title synced
    */
-  readingFlag: z.nativeEnum(ReadingFlag).optional(),
-});
-
-// Types
-export interface User extends z.infer<typeof ZUser> {}
-export interface UpSyncedContent extends z.infer<typeof ZUpSyncedContent> {}
-export interface DownSyncedContent extends z.infer<typeof ZDownSyncedContent> {}
+  readingFlag?: ReadingFlag;
+};
