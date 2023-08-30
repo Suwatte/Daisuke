@@ -1,9 +1,8 @@
 # Daisuke
 
-Types, Classes & Zod Schema definitions for testing & interacting with Suwatte's JavascriptCore wrapper.
+Types definitions for building suwatte Javascript runners.
 
 ## Installation
-
 ```bash
 npm i @suwatte/daisuke
 ```
