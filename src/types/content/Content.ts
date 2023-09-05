@@ -32,12 +32,11 @@ export enum ReadingFlag {
   UNKNOWN,
 }
 export enum ContentType {
-  NOVEL, // Deprecated in v6.0
   MANGA,
   MANHUA,
   MANHWA,
   COMIC,
-  UNKNOWN,
+  NOVEL,
 }
 
 export type Content = Highlight & {
@@ -64,7 +63,8 @@ export type Content = Highlight & {
    *
    * Defaults to false if not defined
    */
-  nsfw?: boolean;
+  isNSFW?: boolean;
+
   /**
    * Other Names of the Publication
    */
@@ -86,10 +86,6 @@ export type Content = Highlight & {
    */
   recommendedPanelMode?: ReadingMode;
 
-  /**
-   * Indicates that this title is a novel
-   */
-  isNovelTitle?: boolean;
   /**
    * Properties that are non-interactive in-app. This should be used to display miscellaneous information in app.
    */

@@ -1,6 +1,6 @@
 import {
+  Form,
   RunnerInfo,
-  TForm,
   TrackItem,
   TrackProgressUpdate,
   TrackStatus,
@@ -60,7 +60,7 @@ export interface ContentTracker extends TrackerCore {
   /**
    * Builds the form for updating the user's track state for a title
    */
-  getEntryForm(id: string): Promise<TForm>;
+  getEntryForm(id: string): Promise<Form>;
 
   /**
    * Called when a user submits and updated entry form.

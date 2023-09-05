@@ -1,5 +1,5 @@
-import { PreferenceGroup } from "../../../types";
+import { Form } from "../../../types";
 
 export interface UserPreferenceHandler {
-  buildPreferenceMenu(): Promise<PreferenceGroup[]>;
+  getPreferenceMenu(): Promise<Form>;
 }

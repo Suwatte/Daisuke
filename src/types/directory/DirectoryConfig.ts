@@ -15,7 +15,7 @@ export type DirectoryConfig = {
      */
     options: Option[];
 
-    defaultKey: string;
+    defaultKey?: string;
     /**
      * Indicates whether the sort order can be configured as ascending or descending
      */
@@ -23,7 +23,7 @@ export type DirectoryConfig = {
   };
 
   /**
-   * If set to true, suwatte will display the search bar. Defaults to false
+   * If set to true, suwatte will display the search bar. Defaults to true
    */
   searchable?: boolean;
 };

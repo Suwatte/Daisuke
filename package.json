@@ -4,7 +4,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./dist && tsc"
+    "build": "rm -rf ./dist && tsc",
+    "check:circular": "dpdm ."
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
@@ -22,7 +23,7 @@
     "url": "https://mantton.com"
   },
   "license": "MIT",
-  "description": "Types & Classes for the Suwatte JavascriptCore Wrapper",
+  "description": "TypeScript Types for Suwatte’s JavaScriptCore and WebKit environment.",
   "files": [
     "/dist"
   ],

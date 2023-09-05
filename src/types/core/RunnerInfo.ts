@@ -39,7 +39,7 @@ export type RunnerInfo = {
   /**
    * The general content rating of titles on this runner
    */
-  readonly rating: CatalogRating;
+  readonly rating?: CatalogRating;
 
   /**
    * This Minimum App Version This Runner Supports.

@@ -55,5 +55,16 @@ export type Chapter = {
   /**
    * The Thumbnail Image of the Chapter
    */
-  cover?: string;
+  thumbnail?: string;
 };
+
+export enum DefinedLanguages {
+  UNIVERSAL = "UNIVERSAL",
+  ENGLISH = "en_US",
+  KOREAN = "ko_KR",
+  JAPANESE = "ja_JP",
+  FRENCH = "fr_FR",
+  CHINESE = "zh-CN",
+  SPANISH = "es_ES",
+  PORTUGUESE = "pt_BR",
+}

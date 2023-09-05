@@ -56,6 +56,11 @@ export type SourceConfig = {
    * This should be a url suwatte will navigate to, if not defined suwatte will use the provided source website
    */
   cloudflareResolutionURL?: string;
+
+  /**
+   * Indicates whether a user can create multiple instances of this runner. Defaults to false
+   */
+  allowsMultipleInstances?: boolean;
 };
 
 interface SourceCore extends SuwatteRunner {

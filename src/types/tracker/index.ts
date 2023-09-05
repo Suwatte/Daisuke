@@ -1,3 +1,5 @@
+import { Property, PublicationStatus } from "../content";
+
 export enum TrackStatus {
   READING = "READING",
   PLANNING = "PLANNING",
@@ -30,4 +32,23 @@ export type TrackItem = {
   webUrl: string;
   entry?: TrackEntry;
   info?: string[];
+  isNSFW?: boolean;
+};
+
+export type FullTrackItem = TrackItem & {
+  summary?: string;
+  properties?: Property[];
+  bannerCover?: string;
+  isFavorite?: boolean;
+  relatedTitles?: TrackItem[];
+  recommendedTitles?: TrackItem[];
+  links?: { label: string; url: string }[];
+  characters?: {
+    name: string;
+    role?: string;
+    image?: string;
+    summary?: string;
+  }[];
+  additionalTitles?: string[];
+  status?: PublicationStatus;
 };
