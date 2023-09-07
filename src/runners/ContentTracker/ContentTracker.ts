@@ -26,11 +26,11 @@ export interface ContentTracker extends TrackerCore {
   /**
    * Called when the user reads a chapter later than what is currently tracked
    * @param id The ID of the title read
-   * @param chapters the chapters read by the user
+   * @param progress the updated reading progress
    */
   didUpdateLastReadChapter(
     id: string,
-    chapter: TrackProgressUpdate
+    progress: TrackProgressUpdate
   ): Promise<void>;
 
   /**
@@ -51,11 +51,6 @@ export interface ContentTracker extends TrackerCore {
    * Called when the user wants to start tracking a previously untracked entry
    */
   beginTracking(id: string, status: TrackStatus): Promise<void>;
-
-  /**
-   * Called when the user wants to stop tracking a previously tracked entry
-   */
-  stopTracking(id: string): Promise<void>;
 
   /**
    * Builds the form for updating the user's track state for a title

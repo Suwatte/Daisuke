@@ -1,5 +1,6 @@
 import { Option } from "../core";
 import { DirectoryFilter } from "./DirectoryFilter";
+import { SortSelection } from "./DirectoryRequest";
 
 export type DirectoryConfig = {
   /**
@@ -15,7 +16,7 @@ export type DirectoryConfig = {
      */
     options: Option[];
 
-    defaultKey?: string;
+    default?: SortSelection;
     /**
      * Indicates whether the sort order can be configured as ascending or descending
      */
