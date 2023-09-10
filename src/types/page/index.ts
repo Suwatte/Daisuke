@@ -20,6 +20,7 @@ export type PageLink = {
    */
   context?: Record<string, any>;
 };
+
 export type PageLinkLabel = {
   /**
    * The label of this link

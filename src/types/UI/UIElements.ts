@@ -32,7 +32,7 @@ export type UISelectable = {
 };
 
 export type UIInteractable<T extends Primitive> = UISectionChild & {
-  value?: T;
+  value?: T | null;
   optional?: true | "true"; // if this value is defined, the interactable element MUST be optional
   didChange?: (value: T) => Promise<void>;
 };

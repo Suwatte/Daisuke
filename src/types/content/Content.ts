@@ -1,7 +1,7 @@
 import { Chapter } from "./Chapter";
 import { HighlightCollection } from "./Collection";
-import { Highlight } from "./Highlight";
-import { NonInteractiveProperty, Property } from "./Property";
+import { ContentSourceItem, Highlight } from "./Highlight";
+import { Property } from "./Property";
 
 // Enums
 export enum PublicationStatus {
@@ -39,7 +39,11 @@ export enum ContentType {
   NOVEL,
 }
 
-export type Content = Highlight & {
+export type Content = ContentSourceItem & {
+  /**
+   * Additional Info that may be displayed with this highlight
+   */
+  info?: string[];
   /**
    * URL to which content is accessible on web
    */
@@ -87,15 +91,11 @@ export type Content = Highlight & {
   recommendedPanelMode?: ReadingMode;
 
   /**
-   * Properties that are non-interactive in-app. This should be used to display miscellaneous information in app.
-   */
-  nonInteractiveProperties?: NonInteractiveProperty[];
-  /**
    * Additional Collections to display.
    *
    * Useful for display stuff like recommended Content
    */
-  includedCollections?: HighlightCollection[];
+  collections?: HighlightCollection[];
   /**
    * The Content's defined Tracking ID's.
    */

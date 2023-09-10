@@ -9,13 +9,6 @@ export type BaseInteractable = {
   label: string;
 };
 
-export type NonInteractiveProperty = BaseInteractable & {
-  /**
-   * The List of Non Interactable Properties
-   */
-  tags: string[];
-};
-
 export type Property = BaseInteractable & {
   /**
    * The List of Tags available under this property.
@@ -33,4 +26,6 @@ export type Tag = BaseInteractable & {
    * The URL of an image to display with this tag
    */
   image?: string;
+
+  noninteractive?: boolean;
 };
