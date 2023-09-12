@@ -1,4 +1,4 @@
-import { ReadingFlag } from "../content/Content";
+import { ReadingFlag } from "../content/Enums";
 
 export enum AuthMethod {
   USERNAME_PW,

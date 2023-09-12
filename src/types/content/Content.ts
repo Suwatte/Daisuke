@@ -1,53 +1,10 @@
+import { BaseItem } from "./BaseItem";
 import { Chapter } from "./Chapter";
 import { HighlightCollection } from "./Collection";
-import { ContentSourceItem, Highlight } from "./Highlight";
+import { PublicationStatus, ContentType, ReadingMode } from "./Enums";
 import { Property } from "./Property";
 
-// Enums
-export enum PublicationStatus {
-  UNKNOWN,
-  ONGOING,
-  COMPLETED,
-  CANCELLED,
-  HIATUS,
-}
-/**
- * The method in which the content can be read
- */
-export enum ReadingMode {
-  PAGED_MANGA, // Page 2 <---- Page 1
-  PAGED_COMIC, // Page 1 ----> Page 2
-  PAGED_VERTICAL,
-  WEBTOON,
-  WEB, // Opens using the chapters WebUrl
-}
-
-export enum ReadingFlag {
-  READING,
-  PLANNED,
-  COMPLETED,
-  DROPPED,
-  REREADING,
-  PAUSED,
-  UNKNOWN,
-}
-export enum ContentType {
-  MANGA,
-  MANHUA,
-  MANHWA,
-  COMIC,
-  NOVEL,
-}
-
-export type Content = ContentSourceItem & {
-  /**
-   * Additional Info that may be displayed with this highlight
-   */
-  info?: string[];
-  /**
-   * URL to which content is accessible on web
-   */
-  webUrl?: string;
+export type Content = BaseItem & {
   /**
    * The Publication Status of Content
    *
@@ -62,12 +19,6 @@ export type Content = ContentSourceItem & {
    * Summary / Description of the content
    */
   summary?: string;
-  /**
-   * Indicates Content Contains Adult Imagery / Text.
-   *
-   * Defaults to false if not defined
-   */
-  isNSFW?: boolean;
 
   /**
    * Other Names of the Publication
@@ -89,7 +40,6 @@ export type Content = ContentSourceItem & {
    * defaults to PAGED_COMIC if not defined
    */
   recommendedPanelMode?: ReadingMode;
-
   /**
    * Additional Collections to display.
    *

@@ -6,7 +6,7 @@ export type BaseInteractable = {
   /**
    * The Label of the Interactable Object
    */
-  label: string;
+  title: string;
 };
 
 export type Property = BaseInteractable & {

@@ -1,11 +1,10 @@
 import { Highlight } from "../content";
-import { TrackItem } from "../tracker";
 
-export type PagedResult<T> = {
+export type PagedResult = {
   /**
    * The results on this page
    */
-  results: T[];
+  results: Highlight[];
   /**
    * Boolean Indicating whether this is the last available page.
    *
@@ -18,6 +17,3 @@ export type PagedResult<T> = {
    */
   totalResultCount?: number;
 };
-
-export type SourcePagedResult = PagedResult<Highlight>;
-export type TrackerPagedResult = PagedResult<TrackItem>;

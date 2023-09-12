@@ -1,7 +1,7 @@
 import { DirectoryHandler } from "..";
-import { FullTrackItem, TrackItem } from "../../types";
+import { FullTrackItem } from "../../types";
 
-export interface AdvancedTracker extends DirectoryHandler<TrackItem> {
+export interface AdvancedTracker extends DirectoryHandler {
   /**
    * This is called to get the info required to prepare a "profile page" for the title
    */

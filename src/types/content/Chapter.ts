@@ -7,10 +7,6 @@ export type Chapter = {
    */
   chapterId: string;
   /**
-   * Content Identifier to which this chapter belongs to
-   */
-  contentId: string;
-  /**
    * The Chapters Number
    */
   number: number;

@@ -46,10 +46,6 @@ export type DirectoryFilter = {
   subtitle?: string;
 
   /**
-   * The label of the ui elements
-   */
-  label?: string;
-  /**
    * The Filter Type
    */
   type: FilterType;

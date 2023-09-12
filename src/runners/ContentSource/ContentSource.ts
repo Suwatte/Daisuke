@@ -4,7 +4,6 @@ import {
   ChapterData,
   RunnerInfo,
   ContentIdentifier,
-  Highlight,
   Property,
 } from "../../types";
 import { DirectoryHandler, SuwatteRunner } from "../Runner";
@@ -69,7 +68,7 @@ interface SourceCore extends SuwatteRunner {
 }
 
 // ---------- Content Source ---------- //
-export interface ContentSource extends SourceCore, DirectoryHandler<Highlight> {
+export interface ContentSource extends SourceCore, DirectoryHandler {
   /// ------------- Content Reading ------------- ///
   /**
    * Gets the titles information from the source
