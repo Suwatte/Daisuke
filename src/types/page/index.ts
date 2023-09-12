@@ -1,4 +1,4 @@
-import { Badge, Either, Highlight, TrackItem } from "..";
+import { Badge, ContextProvider, Either, Highlight } from "..";
 import { DirectoryRequest } from "../directory";
 
 /**
@@ -11,14 +11,8 @@ export type Linkable = Either<
   { request: DirectoryRequest }
 >;
 
-export type PageLink = {
-  /** The Key of this link */
-  key: string;
-
-  /**
-   * Any Additional context that may be passed back to the runner
-   */
-  context?: Record<string, any>;
+export type PageLink = ContextProvider & {
+  id: string;
 };
 
 export type PageLinkLabel = {
@@ -53,25 +47,18 @@ export enum SectionStyle {
 /**
  * This defines a section within the page, if the `items` property is populated, the `resolvePageSection` will not be called as the section is treated as resolved
  */
-export type PageSection<T> = {
-  key: string;
+export type PageSection = {
+  id: string;
   title: string;
   subtitle?: string;
   viewMoreLink?: Linkable;
-  items?: PageItem<T>[];
+  items?: Highlight[];
   style?: SectionStyle;
 };
 
-export type SourcePageSection = PageSection<Highlight>;
-export type TrackerPageSection = PageSection<TrackItem>;
-
-export type ResolvedPageSection<T> = {
-  items: PageItem<T>[];
+export type ResolvedPageSection = {
+  items: Highlight[];
   viewMoreLink?: Linkable;
   updatedTitle?: string;
   updatedSubtitle?: string;
 };
-
-export type PageItem<T> = Either<{ link: PageLinkLabel }, { item: T }>;
-export type SourcePageItem = PageItem<Highlight>;
-export type TrackerPageItem = PageItem<TrackItem>;

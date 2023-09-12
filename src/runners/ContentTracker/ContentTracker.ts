@@ -1,7 +1,7 @@
 import {
   Form,
+  Highlight,
   RunnerInfo,
-  TrackItem,
   TrackProgressUpdate,
   TrackStatus,
 } from "../../types";
@@ -37,13 +37,13 @@ export interface ContentTracker extends TrackerCore {
    * Called when a user wants to link contents to your tracker.
    * @param titles An array containing all the provided names of an entry.
    */
-  getResultsForTitles(titles: string[]): Promise<TrackItem[]>;
+  getResultsForTitles(titles: string[]): Promise<Highlight[]>;
 
   /**
    * A tracker item with the current entry for a title
    * @param id The ID of the title being queried
    */
-  getTrackItem(id: string): Promise<TrackItem>;
+  getTrackItem(id: string): Promise<Highlight>;
 
   didUpdateStatus(id: string, status: TrackStatus): Promise<void>;
 

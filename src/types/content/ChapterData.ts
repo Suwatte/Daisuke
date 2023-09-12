@@ -11,15 +11,6 @@ export type ChapterPage = {
 
 export type ChapterData = {
   /**
-   * The Chapter Identifier. Should be Unique in relation to the Content.
-   */
-  chapterId: string;
-  /**
-   * The Content Identifier of this Chapter, Should be Unique in relation to the Source
-   */
-  contentId: string;
-
-  /**
    * The Pages of the chapter. This should be populated in standard Image Sources.
    */
   pages?: ChapterPage[];

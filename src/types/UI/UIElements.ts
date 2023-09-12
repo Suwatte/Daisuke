@@ -1,8 +1,8 @@
 import { Option } from "../core";
 
 export type UISectionChild = {
-  key: string;
-  label: string;
+  id: string;
+  title: string;
 };
 
 export type UISection<T extends UISectionChild> = {

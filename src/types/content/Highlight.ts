@@ -1,32 +1,11 @@
 import { ContextProvider } from "../core";
 import { Linkable } from "../page";
+import { TrackEntry } from "../tracker";
+import { BaseItem } from "./BaseItem";
 
-export type ContentSourceItem = {
-  /**
-   * Identifier for readable content on source
-   */
-  contentId: string;
-  /**
-   * Title of content
-   */
-  title: string;
-  /**
-   * Base Cover/Thumbnail for content
-   */
-  cover: string;
-
-  /**
-   * Additional Covers Provided
-   */
-  additionalCovers?: string[];
-  /**
-   * Additional Info that may be displayed with this content
-   */
-  info?: string[];
-};
-
-export type Highlight = ContentSourceItem &
+export type Highlight = BaseItem &
   ContextProvider & {
+    id: string;
     /**
      * The Subtitle of the tile
      */
@@ -56,6 +35,13 @@ export type Highlight = ContentSourceItem &
      * Marks this highlight as non interactive
      */
     noninteractive?: boolean;
+
+    /**
+     * The Tracker Entry of this Title
+     *
+     * NOTE: It will only be used on ContentTracker Pages & Directories
+     */
+    entry?: TrackEntry;
   };
 
 /**

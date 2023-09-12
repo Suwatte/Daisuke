@@ -38,10 +38,10 @@ export type DirectoryRequest<T extends Record<string, FilterPrimitives> = {}> =
     /**
      * Define the Configuration Suwatte should pass
      */
-    configKey?: string;
+    configID?: string;
   };
 
 export type SortSelection = {
-  key: string;
+  id: string;
   ascending: boolean;
 };

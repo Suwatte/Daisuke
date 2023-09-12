@@ -6,12 +6,15 @@ export interface ContextMenuHandler {
    */
   getHighlight?(highlight: Highlight): Promise<Highlight>;
   getContextActions(highlight: Highlight): Promise<ContextMenuGroup[]>;
-  didTriggerContextAction(highlight: Highlight, key: string): Promise<void>;
+  didTriggerContextAction(
+    highlight: Highlight,
+    actionID: string
+  ): Promise<void>;
 }
 
 export type ContextMenuAction = {
-  key: string;
-  label: string;
+  id: string;
+  title: string;
   systemImage?: string;
   destructive?: boolean;
   /**
@@ -21,6 +24,6 @@ export type ContextMenuAction = {
 };
 
 export type ContextMenuGroup = {
-  key: string;
+  id: string;
   actions: ContextMenuAction[];
 };

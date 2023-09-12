@@ -1,4 +1,3 @@
-import { Highlight, TrackItem } from "../../../types";
 import {
   PageLinkLabel,
   ResolvedPageSection,
@@ -17,19 +16,16 @@ export interface PageLinkProvider {
 /**
  * The Identifier of the page, suwatte will pass this as `home` to get the default homepage
  */
-export type PageKey = "home" | string;
+export type PageID = "home" | string;
 
 /**
  * The PageLinkResolver intent allows custom pages to be shown rather than the default director view
  */
-export interface PageLinkResolver<T> {
-  getSectionsForPage(link: PageLink): Promise<PageSection<T>[]>;
+export interface PageLinkResolver {
+  getSectionsForPage(link: PageLink): Promise<PageSection[]>;
   willResolveSectionsForPage?(link: PageLink): Promise<void>;
   resolvePageSection(
     link: PageLink,
-    sectionKey: string
-  ): Promise<ResolvedPageSection<T>>;
+    sectionID: string
+  ): Promise<ResolvedPageSection>;
 }
-
-export interface SourcePageLinkResolver extends PageLinkResolver<Highlight> {}
-export interface TrackerPageLinkResolver extends PageLinkResolver<TrackItem> {}
