@@ -16,6 +16,10 @@ export interface StreamContextProvider {
  */
 export type ReaderContext = {
   /**
+   * The content being read, NOTE that this must be provided and the contentID should match the contentID of the content being read not the chapter
+   */
+  content: Highlight;
+  /**
    * This is the Chapter ID of the chapter to be opened
    */
   target: string;
@@ -32,8 +36,4 @@ export type ReaderContext = {
    * The Reading mode to open the reader to
    */
   readingMode?: ReadingMode;
-  /**
-   * The content being read, if not defined, suwatte will derive the content from the provided highlight
-   */
-  content?: Highlight;
 };
