@@ -1,12 +1,10 @@
-import { z } from "zod";
-import { ZChapter } from "./Chapter";
-import { ZHighlightCollection } from "./Collection";
-import { ZBaseInfo } from "./Highlight";
-import { ZNonInteractiveProperty, ZProperty } from "./Property";
-import { ZTrackerInfo } from "./TrackerInfo";
+import { Chapter } from "./Chapter";
+import { HighlightCollection } from "./Collection";
+import { ContentSourceItem, Highlight } from "./Highlight";
+import { Property } from "./Property";
 
 // Enums
-export enum Status {
+export enum PublicationStatus {
   UNKNOWN,
   ONGOING,
   COMPLETED,
@@ -19,9 +17,8 @@ export enum Status {
 export enum ReadingMode {
   PAGED_MANGA, // Page 2 <---- Page 1
   PAGED_COMIC, // Page 1 ----> Page 2
-  VERTICAL,
-  VERTICAL_SEPARATED, // Vertical with Slight Gap Between Pages
-  NOVEL, // Opens In Novel Reader
+  PAGED_VERTICAL,
+  WEBTOON,
   WEB, // Opens using the chapters WebUrl
 }
 
@@ -35,81 +32,74 @@ export enum ReadingFlag {
   UNKNOWN,
 }
 export enum ContentType {
-  NOVEL,
   MANGA,
   MANHUA,
   MANHWA,
   COMIC,
-  UNKNOWN,
+  NOVEL,
 }
 
-// Schemas
-const ZBaseContent = z.object({
+export type Content = ContentSourceItem & {
+  /**
+   * Additional Info that may be displayed with this highlight
+   */
+  info?: string[];
   /**
    * URL to which content is accessible on web
    */
-  webUrl: z.string().url().optional(),
+  webUrl?: string;
   /**
    * The Publication Status of Content
    *
    * Note: Defaults to UNKNOWN if not defined.
    */
-  status: z.nativeEnum(Status).optional(),
+  status?: PublicationStatus;
   /**
    * Names of creators of the publication; Artists, Authors etc
    */
-  creators: z.array(z.string()).optional(),
+  creators?: string[];
   /**
    * Summary / Description of the content
    */
-  summary: z.string().optional(),
+  summary?: string;
   /**
    * Indicates Content Contains Adult Imagery / Text.
    *
    * Defaults to false if not defined
    */
-  adultContent: z.boolean().optional(),
+  isNSFW?: boolean;
 
   /**
    * Other Names of the Publication
    */
-  additionalTitles: z.array(z.string()).optional(),
-
+  additionalTitles?: string[];
   /**
    * Properties of the publication
    */
-  properties: z.array(ZProperty).optional(),
-
+  properties?: Property[];
   /**
    * Content Type of the publication
    *
    * defaults to UNKNOWN if not defined
    */
-  contentType: z.nativeEnum(ContentType).optional(),
-
+  contentType?: ContentType;
   /**
    * The Reading Mode recommended by the source based on available data.
    *
    * defaults to PAGED_COMIC if not defined
    */
-  recommendedReadingMode: z.nativeEnum(ReadingMode).optional(),
-
-  /**
-   * Properties that are non-interactive in-app. This should be used to display miscellaneous information in app.
-   */
-  nonInteractiveProperties: z.array(ZNonInteractiveProperty).optional(),
+  recommendedPanelMode?: ReadingMode;
 
   /**
    * Additional Collections to display.
    *
    * Useful for display stuff like recommended Content
    */
-  includedCollections: z.array(ZHighlightCollection).optional(),
+  collections?: HighlightCollection[];
   /**
    * The Content's defined Tracking ID's.
    */
-  trackerInfo: ZTrackerInfo.optional(),
-
+  trackerInfo?: Record<string, string>;
   /**
    * The content's chapters.
    *
@@ -117,12 +107,10 @@ const ZBaseContent = z.object({
    *
    * Note: If Defined Suwatte will not make the subsequent requests required to get the content's chapters in the profile view.
    */
-  chapters: z.array(ZChapter).optional(),
-});
-export const ZContent = ZBaseInfo.merge(ZBaseContent);
-// Types
-export interface Content extends z.infer<typeof ZContent> {}
-export type URLContentIdentifier = {
+  chapters?: Chapter[];
+};
+
+export type ContentIdentifier = {
   chapterId?: string;
   contentId: string;
 };

@@ -1,62 +1,27 @@
-import { z } from "zod";
-import { ZHighlight } from "./Highlight";
-import { ZSearchRequest } from "./SearchRequest";
+import { DirectoryRequest } from "../directory";
+import { Highlight } from "./Highlight";
 
-export enum CollectionStyle {
-  NORMAL,
-  INFO,
-  GALLERY,
-  UPDATE_LIST,
-}
-
-// Schemas
-export const ZCollectionExcerpt = z.object({
+export type HighlightCollection = {
   /**
    * The ID of the Collection
    */
-  id: z.string().min(1),
+  id: string;
   /**
    * The Title of the Collection
    */
-  title: z.string().min(1),
-  /**
-   * The Style in which this collection should be displayed
-   */
-  style: z.nativeEnum(CollectionStyle),
+  title: string;
   /**
    * The Subtitle of the Collection.
    */
-  subtitle: z.string().optional(),
-  /**
-   * The Search Request to be made to view more results from this collection
-   */
-  request: ZSearchRequest.optional(),
-});
+  subtitle?: string;
 
-export const ZHighlightCollection = ZCollectionExcerpt.extend({
   /**
    * The Highlights/Titles to be displayed within this collection
    */
-  highlights: z.array(ZHighlight),
-});
+  highlights: Highlight[];
 
-export const ZExploreCollection = z.object({
   /**
-   * The Populated Title of this Collection
+   * The Directory Request to be made to view more results from this collection
    */
-  title: z.string().optional(),
-  /**
-   * The Populated Subtitle of this collection.
-   */
-  subtitle: z.string().optional(),
-  /**
-   * The Highlights/Titles to be displayed within this collection
-   */
-  highlights: z.array(ZHighlight),
-});
-
-// Types
-export interface CollectionExcerpt extends z.infer<typeof ZCollectionExcerpt> {}
-export interface HighlightCollection
-  extends z.infer<typeof ZHighlightCollection> {}
-export interface ExploreCollection extends z.infer<typeof ZExploreCollection> {}
+  request?: DirectoryRequest;
+};

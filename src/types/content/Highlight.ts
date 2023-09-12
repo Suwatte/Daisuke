@@ -1,63 +1,67 @@
-import { z } from "zod";
-export const ZBaseInfo = z.object({
+import { ContextProvider } from "../core";
+import { Linkable } from "../page";
+
+export type ContentSourceItem = {
   /**
    * Identifier for readable content on source
    */
-  contentId: z.string().min(1),
-
+  contentId: string;
   /**
    * Title of content
    */
-  title: z.string().min(1),
-
+  title: string;
   /**
    * Base Cover/Thumbnail for content
    */
-  cover: z.string().url(),
+  cover: string;
 
   /**
    * Additional Covers Provided
    */
-  additionalCovers: z.array(z.string()).optional(),
-
+  additionalCovers?: string[];
   /**
-   * Object for Populating INFO Styled Collections
+   * Additional Info that may be displayed with this content
    */
-  stats: z
-    .object({
-      views: z.number().int().nonnegative().optional(),
-      rating: z.number().nonnegative().optional(),
-      follows: z.number().int().nonnegative().optional(),
-    })
-    .optional(),
+  info?: string[];
+};
 
-  /**
-   * Object for Populating LATEST styled Collections
-   */
-  updates: z
-    .object({
-      label: z.string().min(1),
-      date: z.date().optional(),
-      count: z.number().int().nonnegative().optional(),
-    })
-    .optional(),
-});
+export type Highlight = ContentSourceItem &
+  ContextProvider & {
+    /**
+     * The Subtitle of the tile
+     */
+    subtitle?: string;
 
-export const ZHighlight = ZBaseInfo.merge(
-  z.object({
     /**
-     * The Subtitle of this Card/Highlight
+     * Badge to be displayed with the tile
      */
-    subtitle: z.string().min(1).optional(),
+    badge?: Badge;
+
     /**
-     * Tags to be displayed with this title
+     * This should be the URL at which the title is acquirable/downloadable
      */
-    tags: z.array(z.string().min(1)).optional(),
+    acquisitionLink?: string;
+
     /**
-     * Additional Information about this Title
+     * if enabled suwatte will call the "provideReaderContext" to get the information required to properly read this title
      */
-    info: z.record(z.string()).optional(),
-  })
-);
-export interface BaseInfo extends z.infer<typeof ZBaseInfo> {}
-export interface Highlight extends z.infer<typeof ZHighlight> {}
+    streamable?: boolean;
+
+    /**
+     * Link Provided with this
+     */
+    link?: Linkable;
+
+    /**
+     * Marks this highlight as non interactive
+     */
+    noninteractive?: boolean;
+  };
+
+/**
+ * A Badge is added to a highlight tile
+ */
+export type Badge = {
+  count?: number;
+  color?: string;
+};

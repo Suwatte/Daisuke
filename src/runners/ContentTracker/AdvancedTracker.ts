@@ -1,0 +1,11 @@
+import { DirectoryHandler } from "..";
+import { FullTrackItem, TrackItem } from "../../types";
+
+export interface AdvancedTracker extends DirectoryHandler<TrackItem> {
+  /**
+   * This is called to get the info required to prepare a "profile page" for the title
+   */
+  getFullInformation(id: string): Promise<FullTrackItem>;
+
+  toggleFavorite(state: boolean): Promise<void>;
+}

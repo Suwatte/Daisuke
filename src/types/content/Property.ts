@@ -1,53 +1,31 @@
-import { z } from "zod";
-
-// Schemas
-export const ZBaseInteractable = z.object({
+export type BaseInteractable = {
   /**
    * The ID of the Interactable Object
    */
-  id: z.string().min(1),
-
+  id: string;
   /**
    * The Label of the Interactable Object
    */
-  label: z.string().min(1),
-});
+  label: string;
+};
 
-export const ZNonInteractiveProperty = ZBaseInteractable.extend({
-  /**
-   * The List of Non Interactable Properties
-   */
-  tags: z.array(z.string()),
-});
-
-export const ZTag = ZBaseInteractable.extend({
-  /**
-   * A boolean indicating the titles marked with this tag contain Adult Content
-   */
-  adultContent: z.boolean().optional(),
-});
-
-export const ZExploreTag = ZBaseInteractable.extend({
-  filterId: z.string(),
-  /**
-   * A URL pointing to an image to display with this tag.
-   *
-   * This is used in the explore page.
-   */
-  imageUrl: z.string().url().optional(),
-});
-
-export const ZProperty = ZBaseInteractable.extend({
+export type Property = BaseInteractable & {
   /**
    * The List of Tags available under this property.
    */
-  tags: z.array(ZTag),
-});
+  tags: Tag[];
+};
 
-// Types
-export interface Property extends z.infer<typeof ZProperty> {}
-export interface NonInteractiveProperty
-  extends z.infer<typeof ZNonInteractiveProperty> {}
-export interface Tag extends z.infer<typeof ZTag> {}
-export interface SearchSort extends z.infer<typeof ZBaseInteractable> {}
-export interface ExploreTag extends z.infer<typeof ZExploreTag> {}
+export type Tag = BaseInteractable & {
+  /**
+   * A boolean indicating the titles marked with this tag contain Adult Content
+   */
+  nsfw?: boolean;
+
+  /**
+   * The URL of an image to display with this tag
+   */
+  image?: string;
+
+  noninteractive?: boolean;
+};

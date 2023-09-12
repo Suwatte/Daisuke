@@ -1,4 +1,4 @@
-import { NetworkRequest } from "./NetworkRequest";
+import { NetworkRequest } from "./Request";
 
 export type NetworkResponse = {
   data: string;
