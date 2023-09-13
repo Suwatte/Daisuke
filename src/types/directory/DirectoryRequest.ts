@@ -7,7 +7,7 @@ export type FilterPrimitives =
   | boolean
   | number
   | ExcludableMultiSelectProp;
-export type DirectoryRequest<T extends Record<string, FilterPrimitives> = {}> =
+export type DirectoryRequest<T extends Record<string, FilterPrimitives> = any> =
   ContextProvider & {
     /**
      * The Keywords the User would like to search

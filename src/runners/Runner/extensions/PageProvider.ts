@@ -22,10 +22,19 @@ export type PageID = "home" | string;
  * The PageLinkResolver intent allows custom pages to be shown rather than the default director view
  */
 export interface PageLinkResolver {
+  /**
+   * Provides Sections for a page
+   * @param link The Link To be Resolved
+   */
   getSectionsForPage(link: PageLink): Promise<PageSection[]>;
-  willResolveSectionsForPage?(link: PageLink): Promise<void>;
+  /**
+   * Called After sections have been fetched but before they are resolved, the value returned will be passed into the `resolvePageSection` method
+   * @param link
+   */
+  willResolveSectionsForPage?(link: PageLink): Promise<any | null>;
   resolvePageSection(
     link: PageLink,
-    sectionID: string
+    sectionID: string,
+    pageContext?: any
   ): Promise<ResolvedPageSection>;
 }

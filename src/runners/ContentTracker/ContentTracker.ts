@@ -63,5 +63,5 @@ export interface ContentTracker extends TrackerCore {
    * * The value of a property will be `null` if the user removes the property.
    * * `Date` values will be returned as an ISO8601 formatted string
    */
-  didSubmitEntryForm<T extends any = {}>(id: string, form: T): Promise<void>;
+  didSubmitEntryForm(id: string, form: any): Promise<void>;
 }
