@@ -1,4 +1,3 @@
-import { ContentSource } from "../../ContentSource";
 import { NetworkRequest } from "../../../types";
 
 export interface ImageRequestHandler {

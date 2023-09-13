@@ -1,4 +1,3 @@
-import { ContentSource } from "..";
 import { ReadingFlag } from "../../../types";
 
 export interface ContentEventHandler {

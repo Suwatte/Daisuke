@@ -1,4 +1,3 @@
-import { ContentSource } from "..";
 import { UpSyncedContent, DownSyncedContent } from "../../../types";
 
 export interface ChapterSyncHandler {
