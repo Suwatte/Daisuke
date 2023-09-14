@@ -1,7 +1,6 @@
 // Enums
 export enum PublicationStatus {
-  UNKNOWN,
-  ONGOING,
+  ONGOING = 1,
   COMPLETED,
   CANCELLED,
   HIATUS,

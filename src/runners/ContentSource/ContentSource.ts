@@ -3,8 +3,8 @@ import {
   Chapter,
   ChapterData,
   RunnerInfo,
-  ContentIdentifier,
   Property,
+  DeepLinkContext,
 } from "../../types";
 import { DirectoryHandler, SuwatteRunner } from "../Runner";
 
@@ -60,6 +60,11 @@ export type SourceConfig = {
    * Indicates whether a user can create multiple instances of this runner. Defaults to false
    */
   allowsMultipleInstances?: boolean;
+
+  /**
+   * These are the domains on which the runner can handle deep links on
+   */
+  owningLinks?: string[];
 };
 
 interface SourceCore extends SuwatteRunner {
@@ -87,7 +92,7 @@ export interface ContentSource extends SourceCore, DirectoryHandler {
    */
 
   /// ------------- Deep Link ------------- ///
-  getIdentifierForURL(url: string): Promise<ContentIdentifier | null>;
+  handleURL(url: string): Promise<DeepLinkContext | null>;
 
   /**
    * Called to get tags available on the source

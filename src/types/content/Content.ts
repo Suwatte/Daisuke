@@ -59,8 +59,3 @@ export type Content = BaseItem & {
    */
   chapters?: Chapter[];
 };
-
-export type ContentIdentifier = {
-  chapterId?: string;
-  contentId: string;
-};
