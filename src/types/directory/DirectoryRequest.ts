@@ -43,5 +43,5 @@ export type DirectoryRequest<T extends Record<string, FilterPrimitives> = any> =
 
 export type SortSelection = {
   id: string;
-  ascending: boolean;
+  ascending?: boolean;
 };

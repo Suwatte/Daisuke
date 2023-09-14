@@ -1,5 +1,5 @@
 import { Form } from "../../../types";
 
-export interface UserPreferenceHandler {
+export interface RunnerPreferenceProvider {
   getPreferenceMenu(): Promise<Form>;
 }

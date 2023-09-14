@@ -20,7 +20,7 @@ export type DirectoryConfig = {
     /**
      * Indicates whether the sort order can be configured as ascending or descending
      */
-    canChangeOrder: boolean;
+    canChangeOrder?: boolean;
   };
 
   /**

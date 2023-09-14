@@ -31,10 +31,10 @@ export interface PageLinkResolver {
    * Called After sections have been fetched but before they are resolved, the value returned will be passed into the `resolvePageSection` method
    * @param link
    */
-  willResolveSectionsForPage?(link: PageLink): Promise<any | null>;
   resolvePageSection(
     link: PageLink,
-    sectionID: string,
-    pageContext?: any
+    sectionID: string
   ): Promise<ResolvedPageSection>;
+
+  willResolveSectionsForPage?(link: PageLink): Promise<void>;
 }

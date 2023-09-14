@@ -1,6 +1,6 @@
 {
   "name": "@suwatte/daisuke",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -24,7 +24,7 @@
     "url": "https://mantton.com"
   },
   "license": "MIT",
-  "description": "TypeScript Types for Suwatte’s JavaScriptCore and WebKit environment.",
+  "description": "Types & Interfaces for Suwatte’s JavaScriptCore and WebKit environment.",
   "files": [
     "/dist"
   ],
