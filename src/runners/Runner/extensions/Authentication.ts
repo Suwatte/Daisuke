@@ -1,4 +1,4 @@
-import { BasicURL, User } from "../../../types";
+import { BasicURL, BooleanState, User } from "../../../types";
 
 export enum BasicAuthenticationUIIdentifier {
   EMAIL,
@@ -21,7 +21,9 @@ export type WebViewAuthenticatable = RunnerAuthenticatable & {
    * @param name The name of the received cookie
    * @return A boolean value indicating whether the user has been successfully logged in
    */
-  didReceiveSessionCookieFromWebAuthResponse(name: string): Promise<boolean>;
+  didReceiveSessionCookieFromWebAuthResponse(
+    name: string
+  ): Promise<BooleanState>;
 };
 
 export type BasicAuthenticatable = RunnerAuthenticatable & {

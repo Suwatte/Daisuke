@@ -7,5 +7,5 @@ export interface AdvancedTracker extends DirectoryHandler {
    */
   getFullInformation(id: string): Promise<FullTrackItem>;
 
-  toggleFavorite(state: boolean): Promise<void>;
+  toggleFavorite?(state: boolean): Promise<void>;
 }

@@ -1,4 +1,4 @@
-import { RunnerInfo } from "../../types";
+import { DeepLinkContext, RunnerInfo } from "../../types";
 export * from "./extensions";
 
 export enum RunnerEnvironment {
@@ -9,4 +9,6 @@ export enum RunnerEnvironment {
 export interface SuwatteRunner {
   readonly info: RunnerInfo;
   onEnvironmentLoaded?(): Promise<void>;
+  /// ------------- Deep Link ------------- ///
+  handleURL?(url: string): Promise<DeepLinkContext | null>;
 }
