@@ -12,6 +12,7 @@ export type TrackerConfig = {
    * These are keys to which sources providing the tracker id can link to, if this is not defined, suwatte will use the runner's  id
    */
   readonly linkKeys?: string[];
+  readonly owningLinks?: string[];
 };
 
 export interface TrackerCore extends SuwatteRunner {

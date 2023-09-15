@@ -4,7 +4,6 @@ import {
   ChapterData,
   RunnerInfo,
   Property,
-  DeepLinkContext,
 } from "../../types";
 import { DirectoryHandler, SuwatteRunner } from "../Runner";
 
@@ -12,59 +11,64 @@ export type SourceConfig = {
   /**
    * When `true`, suwatte will not cache the retrieved {@link ChapterData}
    */
-  disableChapterDataCaching?: boolean;
+  readonly disableChapterDataCaching?: boolean;
   /**
    * When `true`, suwatte will disable the option to sort by dates and will hide the date label for chapters
    */
-  disableChapterDates?: boolean;
+  readonly disableChapterDates?: boolean;
   /**
    * When `true`, suwatte will hide the flag icon for the chapter tile
    */
-  disableLanguageFlags?: boolean;
+  readonly disableLanguageFlags?: boolean;
   /**
    * When `true`, suwatte will disable being able to view more titles of a provided tags
    */
-  disableTagNavigation?: boolean;
+  readonly disableTagNavigation?: boolean;
   /**
    * When `true`, suwatte will not check for updates on this source
    */
-  disableUpdateChecks?: boolean;
+  readonly disableUpdateChecks?: boolean;
   /**
    * When `true`, suwatte will disable the ability to add/remove titles on this source from the user's library
    */
-  disableLibraryActions?: boolean;
+  readonly disableLibraryActions?: boolean;
   /**
    * When `true`, suwatte will disable the ability to link trackers to titles from this source
    */
-  disableTrackerLinking?: boolean;
+  readonly disableTrackerLinking?: boolean;
   /**
    * When `true`, suwatte will disable the ability to set custom thumbnails for titles on this source
    */
-  disableCustomThumbnails?: boolean;
+  readonly disableCustomThumbnails?: boolean;
   /**
    * When `true`, suwatte will disable the ability to link titles from other sources to this source
    */
-  disableContentLinking?: boolean;
+  readonly disableContentLinking?: boolean;
 
   /**
    * When `true`, suwatte will barr this source from being a possible migration destination
    */
-  disableMigrationDestination?: boolean;
+  readonly disableMigrationDestination?: boolean;
 
   /**
    * This should be a url suwatte will navigate to, if not defined suwatte will use the provided source website
    */
-  cloudflareResolutionURL?: string;
+  readonly cloudflareResolutionURL?: string;
 
   /**
    * Indicates whether a user can create multiple instances of this runner. Defaults to false
    */
-  allowsMultipleInstances?: boolean;
+  readonly allowsMultipleInstances?: boolean;
 
   /**
    * These are the domains on which the runner can handle deep links on
    */
-  owningLinks?: string[];
+  readonly owningLinks?: string[];
+
+  /**
+   * This indicates that this runner will require the user to sign in to access it's content
+   */
+  readonly requiresAuthenticationToAccessContent?: boolean;
 };
 
 interface SourceCore extends SuwatteRunner {
@@ -85,14 +89,6 @@ export interface ContentSource extends SourceCore, DirectoryHandler {
    */
   getChapters(contentId: string): Promise<Chapter[]>;
   getChapterData(contentId: string, chapterId: string): Promise<ChapterData>;
-
-  /// ------------- Content Searching ------------- ///
-  /**
-   * Gets the search results for the source.
-   */
-
-  /// ------------- Deep Link ------------- ///
-  handleURL(url: string): Promise<DeepLinkContext | null>;
 
   /**
    * Called to get tags available on the source
