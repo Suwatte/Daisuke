@@ -10,3 +10,5 @@ export * from "./ReaderContext";
 export * from "./ContextMenu";
 export * from "./DeepLinkContext";
 export * from "./BooleanState";
+export * from "./ContentProgressState";
+export * from "./GroupedUpdatesResponse";

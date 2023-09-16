@@ -20,9 +20,9 @@ export type ReaderContext = {
    */
   chapters: Chapter[];
   /**
-   * The page index to open to in a 0-Index based array
+   * The page to open. The first page will return 1, second returns 2, etc
    */
-  requestedPageIndex?: number;
+  requestedPage?: number;
   /**
    * The Reading mode to open the reader to
    */

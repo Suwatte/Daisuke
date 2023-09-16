@@ -1,13 +1,5 @@
 import { UpSyncedContent, DownSyncedContent } from "../../../types";
 
-export interface ChapterSyncHandler {
-  /**
-   * Returns the IDS of chapters read
-   * @param contentId The ID of the content requested
-   */
-  getReadChapterMarkers(contentId: string): Promise<string[]>;
-}
-
 export interface LibrarySyncHandler {
   /**
    *
