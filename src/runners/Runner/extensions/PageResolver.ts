@@ -1,3 +1,5 @@
+import { PageLink, PageSection, ResolvedPageSection } from "../../../types";
+
 /**
  * The PageLinkResolver intent allows custom pages to be shown rather than the default director view
  */
