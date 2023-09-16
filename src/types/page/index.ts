@@ -12,7 +12,7 @@ export type Linkable = Either<
 >;
 
 export type PageLink = ContextProvider & {
-  id: string;
+  id: "home" | string;
 };
 
 export type PageLinkLabel = {

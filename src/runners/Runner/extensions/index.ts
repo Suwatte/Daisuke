@@ -4,3 +4,4 @@ export * from "./ImageRequest";
 export * from "./DirectoryHandler";
 export * from "./PageProvider";
 export * from "./Setup";
+export * from "./PageResolver";
