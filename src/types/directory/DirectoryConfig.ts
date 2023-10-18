@@ -24,6 +24,11 @@ export type DirectoryConfig = {
   };
 
   /**
+   * Lists are similar to pages but are predefined.
+   */
+  lists?: Option[];
+
+  /**
    * If set to true, suwatte will display the search bar. Defaults to true
    */
   searchable?: boolean;

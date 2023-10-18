@@ -17,6 +17,9 @@ export type DirectoryRequest<T extends Record<string, FilterPrimitives> = any> =
      * The Page Number of the current search
      */
     page: number;
+
+    /* The List Requested By the User */
+    listId?: string;
     /**
      * The User Selected Sort ID
      */

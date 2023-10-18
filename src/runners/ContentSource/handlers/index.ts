@@ -5,3 +5,4 @@ export * from "./LibrarySync";
 export * from "./StreamContextProvider";
 export * from "./ContextMenuHandler";
 export * from "./GroupedUpdateProvider";
+export * from "./ImageRedrawHandler";
