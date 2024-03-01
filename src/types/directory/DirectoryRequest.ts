@@ -41,7 +41,7 @@ export type DirectoryRequest<T extends Record<string, FilterPrimitives> = any> =
     /**
      * Define the Configuration Suwatte should pass
      */
-    configID?: string;
+    configKey?: string;
   };
 
 export type SortSelection = {
