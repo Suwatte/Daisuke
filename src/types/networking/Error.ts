@@ -14,6 +14,7 @@ declare global {
   }
 
   class CloudflareError extends Error {
-    constructor();
+    constructor(resolutionURL?: string);
+    resolutionURL?: string;
   }
 }

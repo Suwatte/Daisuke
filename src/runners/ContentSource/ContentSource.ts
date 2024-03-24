@@ -88,7 +88,7 @@ export interface ContentSource extends SourceCore, DirectoryHandler {
    * Gets the chapters of the specified content.
    */
   getChapters(contentId: string): Promise<Chapter[]>;
-  getChapterData(contentId: string, chapterId: string): Promise<ChapterData>;
+  getChapterData(contentId: string, chapterId: string, chapter?: Chapter): Promise<ChapterData>;
 
   /**
    * Called to get tags available on the source
