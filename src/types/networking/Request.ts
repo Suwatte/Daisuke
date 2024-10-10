@@ -45,7 +45,7 @@ export type NetworkRequest = {
    * An object representing the body of the request. Depending on the Content-Type header,
    * this can either be send as a JSON object (for application/json) or a URL-encoded string (for application/x-www-form-urlencoded).
    */
-  body?: Record<string, any>;
+  body?: any;
 
   /** An object representing any additional headers to be included in the request. */
   headers?: RequestHeaders;
